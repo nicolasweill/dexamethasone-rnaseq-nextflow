@@ -1,0 +1,17 @@
+*.fastq.gz
+*.fq.gz
+*.bam
+*.bai
+*.cram
+work/
+.nextflow*
+fetchngs_results/
+results*/
+test_results/
+ref/
+nf-core-rnaseq/
+*.out
+.Rhistory
+.Rproj.user/
+analysis/*_cache/
+analysis/*_files/
