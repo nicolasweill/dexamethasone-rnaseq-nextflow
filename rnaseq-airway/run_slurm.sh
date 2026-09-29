@@ -14,17 +14,18 @@
 # puis lancer avec le chemin local du pipeline (voir PIPELINE ci-dessous).
 set -euo pipefail
 
-module load StdEnv/2023 java/17 nextflow apptainer
+# Utiliser la MÊME version de Nextflow que pour le téléchargement (voir `module spider nextflow`).
+module load StdEnv/2023 nextflow apptainer
 
-VERSION="3.14.0"   # <-- fixer la dernière stable
-PIPELINE="nf-core/rnaseq"                       # en ligne (si Internet disponible)
-# PIPELINE="nf-core-rnaseq/3_14_0"              # hors ligne, après nf-core download
+# Pipeline téléchargé (nf-core-rnaseq/3_27_0 = rnaseq 3.27.0), pas de -r pour un chemin local
+PIPELINE="nf-core-rnaseq/3_27_0"
 
 export NXF_OPTS='-Xms1g -Xmx4g'
 export NXF_ANSI_LOG=false
 export NXF_APPTAINER_CACHEDIR="$SCRATCH/apptainer_cache"
+export NXF_SINGULARITY_CACHEDIR="$SCRATCH/apptainer_cache"
 
-nextflow run "$PIPELINE" -r "$VERSION" \
+nextflow run "$PIPELINE" \
   --input samplesheet.csv \
   --fasta ref/GRCh38.primary_assembly.genome.fa.gz \
   --gtf ref/gencode.v44.primary_assembly.annotation.gtf.gz \

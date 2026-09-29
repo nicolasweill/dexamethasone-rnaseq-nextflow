@@ -3,7 +3,7 @@
 # Sous Windows : lancer depuis WSL2 (Ubuntu) avec Docker Desktop (intégration WSL activée).
 set -euo pipefail
 
-VERSION="3.14.0"   # <-- fixer la dernière stable indiquée sur nf-co.re/rnaseq
+VERSION="3.27.0"   # <-- fixer la dernière stable indiquée sur nf-co.re/rnaseq
 
 # Vérification de l'installation (une seule fois) :
 # nextflow run nf-core/rnaseq -r $VERSION -profile test,docker --outdir test_results

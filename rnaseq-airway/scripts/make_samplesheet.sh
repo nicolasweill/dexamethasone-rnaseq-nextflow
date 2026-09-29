@@ -2,7 +2,7 @@
 # Construit samplesheet.csv à partir de metadata.csv et des FASTQ téléchargés par fetchngs.
 set -euo pipefail
 
-FQ_DIR="fetchngs_results/fastq"
+FQ_DIR="fastq"
 echo "sample,fastq_1,fastq_2,strandedness" > samplesheet.csv
 
 tail -n +2 metadata.csv | while IFS=, read -r run sample cell dex; do
