@@ -14,8 +14,11 @@
 # puis lancer avec le chemin local du pipeline (voir PIPELINE ci-dessous).
 set -euo pipefail
 
-# Utiliser la MÊME version de Nextflow que pour le téléchargement (voir `module spider nextflow`).
-module load StdEnv/2023 nextflow apptainer
+# rnaseq 3.27.0 exige Nextflow >= 25.10.4 (absent sur Narval) : on utilise la 26.04.4
+# avec l'ancien analyseur de syntaxe, sinon elle ne lit pas le nextflow.config du pipeline.
+module load StdEnv/2023 nextflow/26.04.4 apptainer
+export NXF_SYNTAX_PARSER=v1
+export NXF_OFFLINE=true   # noeuds de calcul sans Internet : pas de tentative de connexion
 
 # Pipeline téléchargé (nf-core-rnaseq/3_27_0 = rnaseq 3.27.0), pas de -r pour un chemin local
 PIPELINE="nf-core-rnaseq/3_27_0"
@@ -31,7 +34,10 @@ nextflow run "$PIPELINE" \
   --gtf ref/gencode.v44.primary_assembly.annotation.gtf.gz \
   --gencode \
   --aligner star_salmon \
+  --skip_deseq2_qc \
   --outdir results_slurm \
   -c conf/slurm.config \
   -profile apptainer \
+  -with-report results_slurm/nextflow_report.html \
+  -with-trace results_slurm/nextflow_trace.txt \
   -resume
