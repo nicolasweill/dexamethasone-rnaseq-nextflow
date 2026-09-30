@@ -4,7 +4,7 @@ Reproducible RNA-seq pipeline (**nf-core/rnaseq 3.27.0**, Nextflow, Apptainer/SL
 expression analysis (**DESeq2**) of the public dataset **GSE52778** ("airway"), with a quantitative
 comparison to the results of the original paper.
 
-![PCA](figures/pca.png)
+<p align="center"><img src="figures/pca.png" alt="PCA" width="480"></p>
 
 ## Biological question
 
@@ -62,7 +62,7 @@ all point the same way, with different magnitudes. This justifies the `cell` ter
 
 ### Induced and repressed genes
 
-![Volcano](figures/volcano.png)
+<p align="center"><img src="figures/volcano.png" alt="Volcano" width="480"></p>
 
 The most strongly and significantly changed genes are mostly **induced** (right), with `DUSP1` at the top
 of the ranking. Many genes are also **repressed** (for example `VCAM1`, `CXCL12`, `SOX4`). The 40 most
@@ -73,7 +73,7 @@ significant genes clearly separate treated from control samples in every donor
 
 ### Validated genes are recovered with matching fold changes
 
-![Comparison](figures/comparaison_article.png)
+<p align="center"><img src="figures/comparaison_article.png" alt="Comparison" width="460"></p>
 
 The authors validated eight genes by qPCR and report their mean FPKM with and without dexamethasone. The
 ratio of the two is compared below with our DESeq2 fold change (`2^log2FC`, shrunken).
@@ -101,7 +101,7 @@ This agreement is obtained with tools and a genome different from those of the p
 
 ### Functional enrichment
 
-![GO](figures/go_up.png)
+<p align="center"><img src="figures/go_up.png" alt="GO" width="520"></p>
 
 Induced genes are enriched in **extracellular matrix organization**, **cell-substrate adhesion**,
 **blood vessel morphogenesis** and **circulatory system processes**. These themes overlap with those
